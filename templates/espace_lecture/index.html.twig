@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EspaceLectureController!{% endblock %}
+
+{% block titre %}Espace Lecteur{% endblock %}
+
+{% block body %}
+    <h2>Mes informations</h2>
+
+    <ul class="list-group">
+        <li class="list-group-item">Pseudo : {{ app.user.pseudo }}</li>
+        <li class="list-group-item">Identité: {{ app.user.nom ~ " " ~ app.user.prenom }}</li>
+        <li class="list-group-item">Identifiant N°: {{app.user.id}}</li>
+    </ul>
+
+    <h2>Historique des emprunts</h2>
+    <ul class="list-group">
+        {% for emprunt in app.user.emprunts %}
+            <li class="list-group-item">
+                <div class="d-flex">
+                    <div class="col">Date : {{ emprunt.dateEmprunt|date('Y-m-d') }}</div>
+                    <div class="col">Livre : {{ emprunt.livre.titreComplet }}</div>
+                    <div class="col">Retour : {{  emprunt.dateRetour ? emprunt.dateRetour|date('d/m/Y') : "" }}</div>
+                </div>
+            </li>
+        {% else %}
+            <li class="list-group-1">
+                <div class="alert alert-info">
+                    Vous n'avez emprunté aucun livre.
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

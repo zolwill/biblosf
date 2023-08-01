@@ -1,0 +1,133 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{path('app_home')}}">
+            Navbar
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            {% if app.user %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_espace_lecture')}}"><i class="fa fa-user"></i>
+                        {{ app.user.userIdentifier }}                    
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{path("app_logout")}}">
+                        Déconnexion                  
+                    </a>
+                </li>
+             {% if is_granted("ROLE_ADMIN") %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Auteurs
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            <a class="dropdown-item" href="{{ path("app_admin_auteur_index") }}">Liste</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ path("app_admin_auteur_new") }}">Ajouter</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Livres
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            <a class="dropdown-item" href="{{ path("app_admin_livre_index") }}">Liste</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ path("app_admin_livre_new") }}">Ajouter</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Genres
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            <a class="dropdown-item" href="{{ path("app_admin_genre_index") }}">Liste</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ path("app_admin_genre_new") }}">Ajouter</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Abonnés
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            <a class="dropdown-item" href="{{ path("app_admin_abonne_index") }}">Liste</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ path("app_admin_abonne_new") }}">Ajouter</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Emprunts
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            <a class="dropdown-item" href="{{ path("app_admin_emprunt_index") }}">Liste</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ path("app_admin_emprunt_new") }}">Ajouter</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Test
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li>
+                        <a class="dropdown-item" href="{{ path('app_livre') }}">
+                            Liste livre
+                                                        
+                        </a>
+                    </li>
+                    <li>
+                        <a href=""></a>
+                        <a class="dropdown-item" href="{{path('app_livre_ajouter')}}">
+                            ajouter livre
+                                                        
+                        </a>
+                    </li>
+                </ul>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">
+                        Disabled
+                                                
+                    </a>
+                </li> 
+                {% endif %}
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{path("app_login")}}">
+                        Connexion                
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{path("app_register")}}">
+                        Inscription
+                    </a>
+                </li>
+            {% endif %}
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>

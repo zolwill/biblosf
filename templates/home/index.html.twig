@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Page d'accueil {% endblock %}
+
+{% block body %}
+{% for livre in livres %}
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{ livre.titre }}</h5>
+  <a href="{{ path("app_admin_auteur_show", {id:livre.auteur.id}) }}" class="card-text">{{ livre.auteur.prenom ~ " " ~ livre.auteur.nom}}</a>
+  {% if app.user = "ROLE_LECTEUR" %}
+  <a href="{{path("app_espace_lecture_emprunter", {id: livre.id})}}">Lien pour emprunter</a>
+  {% endif %}
+  </div>
+</div>
+{% endfor %}
+{% endblock %}

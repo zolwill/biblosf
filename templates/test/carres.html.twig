@@ -1,0 +1,19 @@
+{% block body %}
+    <table>
+        <thead>
+        <tr>
+        <th>nb</th>
+        <th>carré</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in 1..longueur %}
+        <tr>
+        <td> {{i}}</td>
+        <td>{{i * i}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

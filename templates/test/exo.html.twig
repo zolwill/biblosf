@@ -1,0 +1,24 @@
+{% block body %}
+<div>
+    {{nombre1}} + {{nombre2}}={{nombre1 + nombre2}}
+    {{nombre1}} - {{nombre2}} = {{nombre1 - nombre2}}
+    {{nombre1}} x {{nombre2}} = {{nombre1 * nombre2}}
+    {% if  nombre2 == 0 %}
+    <li>Division par 0 impossible</li>
+    {% else %}
+        {{nombre1}} / {{nombre2}} = {{nombre1 / nombre2}}
+    {% endif %}
+</div>
+
+    {% if nombre1 == nombre2 %}
+        <div class="alert alert-info">Les 2 nombres sont identiques</div>
+    {% elseif nombre1 > nombre2 %}
+        <div class="alert alert-warning">le nombre 1  est superieur que le nombre 2</div>
+    {% elseif  nombre1 < nombre2 %}
+        <div class="alert alert-warning">le nombre 1  est inferieur que le nombre 2</div>
+    {# {% else %}
+        <div class="alert alert-warning">Les 2 nombres sont différent</div> #}
+    {% endif %}
+    
+
+{% endblock %}
